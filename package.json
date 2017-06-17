@@ -1,0 +1,24 @@
+{
+  "name": "smartfarming",
+  "version": "1.0.0",
+  "description": "API para conexão de fazendas inteligentes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermelo/smartfarming.git"
+  },
+  "keywords": [
+    "api",
+    "smartfarming",
+    "iot"
+  ],
+  "author": "Guilherme R. de Melo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilhermelo/smartfarming/issues"
+  },
+  "homepage": "https://github.com/guilhermelo/smartfarming#readme"
+}
