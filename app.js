@@ -1,5 +1,6 @@
-var app = require('./conf/express')();
+var http = require('http');
+var app = require('./conf/express');
 
-app.listen(3000, function(){
+http.createServer(app).listen(3000, function(){
   console.log("Servidor no ar! :)");
 });
