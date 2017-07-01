@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="smartfarming">
+  <head>
+    <meta charset="utf-8">
+    <title>Alurapic</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/controllers/main-controller.js"></script>
+  </head>
+  <body ng-controller="MainController">
+    <div class="container">
+      <h1 class="text-center">Smart Farming</h1>
+      <img class="img-responsive center-block" src="{{sensor.url}}" alt="{{sensor.titulo}}">
+    </div> <!-- Fim do container -->
+  </body>
+</html>
