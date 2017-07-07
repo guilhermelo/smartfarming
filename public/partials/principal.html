@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="text-center">Smart Farming</h1>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <!-- debounce = tempo para a pesquisa ser concluida -->
+          <input ng-model="filtro" ng-model-options="{ debounce: 500 }" class="form-control" placeholder="filtrar">
+    </form>
+  </div>
+</div>
+<br>
+<div class="row">
+  <meu-painel class="col-md-4 painel-animado" ng-repeat="sensor in sensores | filter: filtro" sensor="sensor">
+  </meu-painel>
+</div>

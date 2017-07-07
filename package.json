@@ -24,6 +24,7 @@
   "homepage": "https://github.com/guilhermelo/smartfarming#readme",
   "dependencies": {
     "consign": "^0.1.5",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "path": "^0.12.7"
   }
 }

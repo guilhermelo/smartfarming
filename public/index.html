@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="smartfarming">
   <head>
+    <base href="/">
     <meta charset="utf-8">
-    <title>Alurapic</title>
+    <title>SmartFarming</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/efeitos.css">
+    <link rel="stylesheet" href="/css/fonts/css/font-awesome.min.css">
     <script src="js/lib/angular.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/controllers/main-controller.js"></script>
+    <script src="js/controllers/sensor-controller.js"></script>
+    <script src="js/directives/meu-painel.js"></script>
+    <script src="js/lib/angular-animate.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
   </head>
-  <body ng-controller="MainController">
+  <body>
     <div class="container">
-      <h1 class="text-center">Smart Farming</h1>
-      <img class="img-responsive center-block" src="{{sensor.url}}" alt="{{sensor.titulo}}">
+      <ng-view></ng-view>
     </div> <!-- Fim do container -->
   </body>
 </html>

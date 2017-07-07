@@ -1,0 +1,29 @@
+
+.painel-animado.ng-leave-active{
+  -moz-transform: scale(0.1);
+  -webkit-transform: scale(0.1);
+  -ms-transform: scale(0.1);
+  -o-transform: scale(0.1);
+  transform: scale(0.1);
+}
+
+
+.painel-animado.ng-leave-active{
+  -moz-transition: transform 0.8%;
+  -webkit-transition: transform 0.8%;
+  -ms-transition: transform 0.8%;
+  -o-transition: transform 0.8%;
+  transition: transform 0.8%;
+}
+
+.space{
+  margin: auto;
+  padding: 10px;
+}
+
+
+.jumbotron-background{
+  background-image: url('../images/jumbotron-background.jpg');
+  background-color: #ccc;
+  background-repeat: no-repeat;
+}
