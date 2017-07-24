@@ -13,5 +13,10 @@ angular.module('smartfarming', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
     controller: 'SensorController'
   });
 
+  $routeProvider.when('/login', {
+    templateUrl: 'partials/login.html',
+    controller: 'LoginController'
+  })
+
   $routeProvider.otherwise({ redirectTo: '/sensores'});
 });
