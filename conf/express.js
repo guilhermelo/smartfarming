@@ -1,11 +1,14 @@
 var express = require('express');
 var app = express();
 var consign = require('consign');
+var bodyParser = require('body-parser');
+
 //Variável de ambiente do express
 app.set('secret', 'smartfarming');
 
 app.use(express.static('./public'));
 app.use(bodyParser.json());
+
 
 consign({cwd: 'app'})
 .include('models')
