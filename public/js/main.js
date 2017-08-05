@@ -1,7 +1,10 @@
 angular.module('smartfarming', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
-.config(function($routeProvider, $locationProvider) {
+.config(function($routeProvider, $locationProvider, $httpProvider) {
 
   $locationProvider.html5Mode(true);
+
+  //Trabalha com  baixo nível do http com mesmo nome do factory
+  $httpProvider.interceptors.push('tokenInterceptor');
 
   $routeProvider.when('/sensores', {
     templateUrl: 'partials/principal.html',
@@ -18,5 +21,11 @@ angular.module('smartfarming', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
     controller: 'LoginController'
   });
 
+  $routeProvider.when('/sensor/:id', {
+    templateUrl: '/partials/grafico.html',
+    controller: 'GoogleChartController'
+  });
+
   $routeProvider.otherwise({ redirectTo: '/sensores'});
+
 });
