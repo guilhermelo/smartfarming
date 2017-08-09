@@ -21,8 +21,8 @@ angular.module('smartfarming', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
     controller: 'LoginController'
   });
 
-  $routeProvider.when('/sensor/:id', {
-    templateUrl: '/partials/grafico.html',
+  $routeProvider.when('/sensor/chart/:id', {
+    templateUrl: 'partials/grafico.html',
     controller: 'GoogleChartController'
   });
 

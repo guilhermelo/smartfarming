@@ -34,9 +34,19 @@ api.recuperaSensor = function(req, res){
         console.log(error);
         res.status(500).json(error);
       });
-
-  //model.find().distinct('fazenda');
 };
+
+api.recuperaSensoresPorId = function(req, res){
+  var id = req.params.id;
+
+  console.log("Cheguei aqui: " + id);
+
+  model.find({})
+       .where({'codigo': id})
+       .exec(function(error, docs) {
+         res.json(docs);
+       });
+}
 
 api.recuperSensorPorId = function(){
   model.findById(req.params.id)

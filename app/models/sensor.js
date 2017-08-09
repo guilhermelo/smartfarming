@@ -1,5 +1,9 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
+  codigo: {
+    type: Number,
+    required: true
+  },
   fazenda: {
     type: String,
     required: true
@@ -25,6 +29,10 @@ var schema = mongoose.Schema({
     required: true
   },
   longitude: {
+    type: String,
+    required: true
+  },
+  dtHrRecuperado: {
     type: String,
     required: true
   }

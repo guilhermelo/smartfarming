@@ -1,41 +1,59 @@
-angular.module('smartfarming').controller('GoogleChartController', function($scope, $http){
+angular.module('smartfarming').controller('GoogleChartController', function($scope, $http, $routeParams){
 
-  $scope.temperaturas = [];
+  var uri = '/api/fazenda/{id}/temperatura/';
+  var id = $routeParams.id;
+  uri = uri.replace('{id}', id);
 
-  google.load('visualization', '1', {'packages' : ['corechart']});
-  google.setOnLoadCallback(desenhaGrafico);
+  console.log('URI: ' + uri);
 
-  function desenhaGrafico() {
-    var valores = recuperaValores();
+  var resultados = [];
 
-    var dados = new google.visualization.DataTable();
-    dados.addColumn('number', 'Temperatura');
+  $http.get(uri)
+      .then(function(result) {
+        desenhaGrafico(result.data);
+      }, function(erro){
+        console.log(erro);
+      });
 
-    dados.addRows(dados.length);
+  function desenhaGrafico(valores){
 
-    for(i = 0; i < dados.length; i++){
-      dados.setValue(i, dados[i]);
-    }
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(function() {
 
-    var div = document.getElementById('chart_div');
-    var grafico = new google.visualization.LineChart(div);
-    grafico.draw(dados, {width: 700, height: 340, title: 'Minhas contas'})
+      console.log(valores);
 
+      var data = google.visualization.arrayToDataTable([
+          ['Data', 'Temperatura'],
+          ['12/04/2017',  14],
+          ['13/04/2017',  23],
+          ['14/04/2017',  18],
+          ['15/04/2017',  21]
+      ]);
+
+      var options = {
+        title: 'Histórico de Temperatura',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    });
   }
 
+  function montaVetor(valores){
 
-  function recuperaValores(){
+    var vetor = [];
 
-    var resultados = [];
+    vetor[0][0] = 'Data';
+    vetor[0][1] = 'Temperatura';
 
-    $http.get('api/fazenda/{nome}/temperatura/')
-        .then(function(result) {
-          resultados = result.data;
-        }, function(erro){
-          console.log(erro);
-        });
-
-    return resultados;
+    for (var i = 1; i < valores.length; i++) {
+      for (var j = 0; j < 2; j++) {
+        vetor[i][j] = i == 0 ? valores['temperatura'] : valores['dtHrRecuperado'];
+      }
+    }
   }
 
 });

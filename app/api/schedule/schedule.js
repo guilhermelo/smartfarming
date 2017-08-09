@@ -1,4 +1,5 @@
 var cron  = require('node-cron');
+var moment = require('moment');
 var mqtt = require('mqtt');
 
 function schedule(app){
@@ -13,8 +14,10 @@ function schedule(app){
 
     cllientMQTT.subscribe('/sensor', function(){
       cllientMQTT.on('message', function(topic, message){
+        var json = JSON.parse(message.toString());
+        json.dtHrRecuperado = moment().format('DD/MM/YYYY');
         //Salvar o sensor no banco de dados
-        api.gravarSensor(JSON.parse(message.toString()));
+        api.gravarSensor(json);
         cllientMQTT.end();
       });
     });
