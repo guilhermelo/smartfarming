@@ -21,15 +21,16 @@ angular.module('smartfarming').controller('GoogleChartController', function($sco
     google.charts.setOnLoadCallback(function() {
 
       console.log(valores);
-
-      var data = google.visualization.arrayToDataTable([
+/*
+      var teste = [
           ['Data', 'Temperatura'],
           ['12/04/2017',  14],
           ['13/04/2017',  23],
           ['14/04/2017',  18],
           ['15/04/2017',  21]
-      ]);
+      ]; */
 
+      var data = google.visualization.arrayToDataTable(montaVetor(valores));
       var options = {
         title: 'Histórico de Temperatura',
         curveType: 'function',
@@ -46,14 +47,13 @@ angular.module('smartfarming').controller('GoogleChartController', function($sco
 
     var vetor = [];
 
-    vetor[0][0] = 'Data';
-    vetor[0][1] = 'Temperatura';
+    vetor.push(['Data', 'Temperatura']);
 
-    for (var i = 1; i < valores.length; i++) {
-      for (var j = 0; j < 2; j++) {
-        vetor[i][j] = i == 0 ? valores['temperatura'] : valores['dtHrRecuperado'];
-      }
+    for (var valor of valores) {
+      vetor.push([valor.dtHrRecuperado, parseInt(valor.temperatura)]);
     }
+
+    return vetor;
   }
 
 });
