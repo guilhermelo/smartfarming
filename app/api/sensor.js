@@ -39,10 +39,10 @@ api.recuperaSensor = function(req, res){
 api.recuperaSensoresPorId = function(req, res){
   var id = req.params.id;
 
-  console.log("Cheguei aqui: " + id);
-
   model.find({})
        .where({'codigo': id})
+       .sort({dtHrRecuperado: -1})
+       .limit(10)
        .exec(function(error, docs) {
          res.json(docs);
        });
@@ -52,7 +52,7 @@ api.recuperSensorPorId = function(){
   model.findById(req.params.id)
        .then(function(sensor){
          if(!sensor){
-           throw Error('Foto não encontrada');
+           throw Error('Sensor não encontrado');
          }
          res.json(sensor);
 

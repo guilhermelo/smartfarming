@@ -5,6 +5,7 @@ angular.module('smartfarming').controller('GoogleChartController', function($sco
   uri = uri.replace('{id}', id);
 
   console.log('URI: ' + uri);
+  $scope.chartTitle = "Histórico de Temperatura";
 
   var resultados = [];
 
@@ -21,18 +22,10 @@ angular.module('smartfarming').controller('GoogleChartController', function($sco
     google.charts.setOnLoadCallback(function() {
 
       console.log(valores);
-/*
-      var teste = [
-          ['Data', 'Temperatura'],
-          ['12/04/2017',  14],
-          ['13/04/2017',  23],
-          ['14/04/2017',  18],
-          ['15/04/2017',  21]
-      ]; */
 
       var data = google.visualization.arrayToDataTable(montaVetor(valores));
       var options = {
-        title: 'Histórico de Temperatura',
+        title: '',
         curveType: 'function',
         legend: { position: 'bottom' }
       };

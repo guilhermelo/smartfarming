@@ -28,7 +28,7 @@ angular.module('smartfarming').factory('tokenInterceptor', function($q, $window,
     if(rejection != null && rejection.status == 401){
       //Redirecionar para a parcial de login
       delete $window.sessionStorage.token;
-      $location.path('/#/login');
+      $location.path('/login');
     }
 
     return $q.reject(rejection);

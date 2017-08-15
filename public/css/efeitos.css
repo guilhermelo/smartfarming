@@ -27,3 +27,8 @@
   background-color: #ccc;
   background-repeat: no-repeat;
 }
+
+.login{
+  float: none;
+  margin: 0 auto;
+}
