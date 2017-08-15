@@ -12,12 +12,17 @@ function schedule(app){
       console.log('Conectado ao MQTT');
     });
 
-    cllientMQTT.subscribe('/sensor', function(){
+    cllientMQTT.subscribe('/sensores', function(){
       cllientMQTT.on('message', function(topic, message){
-        var json = JSON.parse(message.toString());
-        json.dtHrRecuperado = moment().format('DD/MM/YYYY');
-        //Salvar o sensor no banco de dados
-        api.gravarSensor(json);
+        console.log("Mensagem: " + message.toString());
+        if(message.toString().startsWith("{")){
+            var json = JSON.parse(message.toString());
+            json.dtHrRecuperado = moment().format('DD/MM/YYYY HH:mm:ss');
+            //Salvar o sensor no banco de dados
+            api.gravarSensor(json);
+        }else{
+          console.log("Não começou");
+        }
         cllientMQTT.end();
       });
     });

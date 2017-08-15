@@ -16,14 +16,11 @@ var schema = mongoose.Schema({
     type: String,
     required: true
   },
-  chuva: {
-    type: String,
-    required: true
-  },
   luminosidade: {
     type: String,
     required: true
   },
+  /*
   latitude: {
     type: String,
     required: true
@@ -31,7 +28,7 @@ var schema = mongoose.Schema({
   longitude: {
     type: String,
     required: true
-  },
+  }, */
   dtHrRecuperado: {
     type: String,
     required: true
