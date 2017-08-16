@@ -28,6 +28,8 @@ api.recuperaSensor = function(req, res){
   //Trabalhando com promise
   model
       .find({})
+      .sort({dtHrRecuperado: -1})
+      .limit(1)
       .then(function(sensores){
         res.json(sensores);
       }, function(error){
