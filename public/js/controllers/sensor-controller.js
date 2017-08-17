@@ -5,12 +5,12 @@ angular.module('smartfarming').controller('SensorController', function($scope, $
   $scope.submeter = function(){
     // Verifica se formulário está válido
     if($scope.formulario.$valid){
-      $hhtp.post('/sensor/save', $scope.foto).success(function(){
-        $scope.sensor = {};
-        $scope.mensagem = 'Sensor cadastrado com sucesso';
-      }).error(function(){
-        $scope.mensagem = 'Erro ao tentar cadastrar sensor';
-      });
+      $http.post('/sensor/save')
+           .then(function(result){
+              console.log('Sensor adicionado');
+           }, function(error){
+              console.log('Erro: ' + error);
+           });
     }
   }
 });

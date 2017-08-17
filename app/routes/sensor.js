@@ -6,7 +6,7 @@ module.exports = function(app){
 
   app.get('/api/sensores', api.recuperaSensor);
 
-  app.get('/api/fazenda/:id/temperatura/', api.recuperaSensoresPorId);
+  app.get('/api/fazenda/:id/temperatura', api.recuperaSensoresPorId);
 
   app.all('/*', function(req, res) {
         res.sendFile(path.resolve('public/index.html'));

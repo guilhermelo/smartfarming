@@ -10,28 +10,19 @@ var schema = mongoose.Schema({
   },
   temperatura: {
     type: String,
-    required: true
+    required: false
   },
   umidade: {
     type: String,
-    required: true
+    required: false
   },
   luminosidade: {
     type: String,
-    required: true
+    required: false
   },
-  /*
-  latitude: {
-    type: String,
-    required: true
-  },
-  longitude: {
-    type: String,
-    required: true
-  }, */
   dtHrRecuperado: {
     type: String,
-    required: true
+    required: false
   }
 });
 mongoose.model('Sensor', schema);

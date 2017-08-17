@@ -26,16 +26,16 @@ api.atualiza = function(){
 
 api.recuperaSensor = function(req, res){
   //Trabalhando com promise
-  model
-      .find({})
-      .sort({dtHrRecuperado: -1})
-      .limit(1)
-      .then(function(sensores){
-        res.json(sensores);
-      }, function(error){
-        console.log(error);
-        res.status(500).json(error);
-      });
+
+  model.find({})
+       .sort({dtHrRecuperado: -1})
+       .limit(1)
+       .then(function(sensores){
+         res.json(sensores);
+       }, function(error){
+         console.log(error);
+         res.status(500).json(error);
+       });
 };
 
 api.recuperaSensoresPorId = function(req, res){

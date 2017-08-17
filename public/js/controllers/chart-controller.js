@@ -1,13 +1,10 @@
 angular.module('smartfarming').controller('GoogleChartController', function($scope, $http, $routeParams){
 
-  var uri = '/api/fazenda/{id}/temperatura/';
-  var id = $routeParams.id;
-  uri = uri.replace('{id}', id);
-
-  console.log('URI: ' + uri);
   $scope.chartTitle = "Histórico de Temperatura";
-
-  var resultados = [];
+  var uri = '/api/fazenda/{id}/temperatura';
+  var id = $routeParams.id;
+  $scope.fazenda = $routeParams.fazenda;
+  uri = uri.replace('{id}', id);
 
   $http.get(uri)
       .then(function(result) {
