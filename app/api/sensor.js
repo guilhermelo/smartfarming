@@ -6,7 +6,6 @@ var model = mongoose.model('Sensor');
 var modelCad = mongoose.model('CadSensor');
 
 api.recuperaSensor = function(req, res){
-
   model.find({})
        .sort({dtHrRecuperado: -1})
        .then(function(sensores){
@@ -43,17 +42,12 @@ api.gravarCadSensor = function(req, res){
 
   var sensor = req.body;
 
-  if(!api.verificaCadSensor(sensor.codigo)){
     modelCad.create(sensor)
             .then(function(sensor){
                res.json(sensor);
              }, function(error){
                console.log(error);
              });
-  }else{
-    res.sendStatus(400);
-  }
-
 };
 
 api.verificaCadSensor = function(codigo) {

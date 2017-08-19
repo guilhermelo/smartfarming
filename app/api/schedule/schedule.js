@@ -18,12 +18,8 @@ function schedule(app){
         if(message.toString().startsWith("{")){
             var json = JSON.parse(message.toString());
             json.dtHrRecuperado = moment().format('DD/MM/YYYY HH:mm:ss');
-            //Salvar o sensor no banco de dados
-            if(api.verificaCadSensor(json.codigo)){
-                api.gravarSensor(json);
-            }else{
-              console.log('Sensor não cadastrado');
-            }
+            api.gravarSensor(json);
+            console.log('Sensor cadastrado');
         }else{
           console.log("Payload não é um JSON!");
         }
