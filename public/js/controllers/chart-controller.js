@@ -4,6 +4,7 @@ angular.module('smartfarming').controller('GoogleChartController', function($sco
   var uri = '/api/fazenda/{id}/temperatura';
   var id = $routeParams.id;
   $scope.fazenda = $routeParams.fazenda;
+  $scope.mostraMenu = true;
   uri = uri.replace('{id}', id);
 
   $http.get(uri)

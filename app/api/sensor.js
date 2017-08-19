@@ -3,33 +3,12 @@ var mongoose = require('mongoose');
 var api = {};
 
 var model = mongoose.model('Sensor');
-
-api.gravarSensor = function(sensor){
-  model
-      .create(sensor)
-      .then(function(sensor){
-         console.log("Sensor salvo!");
-       }, function(error){
-         console.log(error);
-       });
-};
-
-api.atualiza = function(){
-  model.findByIdAndUpdate(req.params.id, req.body)
-       .then(function(sensor){
-         res.json(sensor)
-       }, function(error){
-         console.log(error);
-         res.status(500).json(error);
-       });
-};
+var modelCad = mongoose.model('CadSensor');
 
 api.recuperaSensor = function(req, res){
-  //Trabalhando com promise
 
   model.find({})
        .sort({dtHrRecuperado: -1})
-       .limit(1)
        .then(function(sensores){
          res.json(sensores);
        }, function(error){
@@ -49,6 +28,55 @@ api.recuperaSensoresPorId = function(req, res){
          res.json(docs);
        });
 }
+
+api.gravarSensor = function(sensor){
+  model
+      .create(sensor)
+      .then(function(sensor){
+         console.log("Sensor salvo!");
+       }, function(error){
+         console.log(error);
+       });
+};
+
+api.gravarCadSensor = function(req, res){
+
+  var sensor = req.body;
+
+  if(!api.verificaCadSensor(sensor.codigo)){
+    modelCad.create(sensor)
+            .then(function(sensor){
+               res.json(sensor);
+             }, function(error){
+               console.log(error);
+             });
+  }else{
+    res.sendStatus(400);
+  }
+
+};
+
+api.verificaCadSensor = function(codigo) {
+  modelCad.find({})
+          .where({'codigo': codigo})
+          .exec(function(error, docs) {
+            if(docs.length > 0){
+              return true;
+            }else{
+              return false;
+            }
+          });
+};
+
+api.atualiza = function(){
+  model.findByIdAndUpdate(req.params.id, req.body)
+       .then(function(sensor){
+         res.json(sensor)
+       }, function(error){
+         console.log(error);
+         res.status(500).json(error);
+       });
+};
 
 api.recuperSensorPorId = function(){
   model.findById(req.params.id)

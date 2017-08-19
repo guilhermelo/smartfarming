@@ -2,6 +2,7 @@ angular.module('smartfarming').controller('MainController', function($scope, $ht
 
   $scope.sensores = [];
   $scope.filtro = '';
+  $scope.mostraMenu = true;
 
 $http.get('/api/sensores')
      .then(function(resultado){

@@ -21,11 +21,8 @@
   padding: 10px;
 }
 
-
-.jumbotron-background{
-  background-image: url('../images/jumbotron-background.jpg');
-  background-color: #ccc;
-  background-repeat: no-repeat;
+.jumbotron{
+    background-color: #DBD9C3;
 }
 
 .login{

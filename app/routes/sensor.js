@@ -8,6 +8,8 @@ module.exports = function(app){
 
   app.get('/api/fazenda/:id/temperatura', api.recuperaSensoresPorId);
 
+  app.post('/api/sensor/save', api.gravarCadSensor);
+
   app.all('/*', function(req, res) {
         res.sendFile(path.resolve('public/index.html'));
   });

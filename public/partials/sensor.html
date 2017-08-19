@@ -1,25 +1,25 @@
+<nav class="navbar navbar-inverse" ng-show="mostraMenu">
+  <a href="/" class="navbar-brand">Smart Farming</a>
+  <ul class="nav navbar-nav">
+    <li><a href="/sensor/new">Sensor</a></li>
+  </ul>
+</nav>
 <div class="col-md-6 login">
   <div class="page-header text-center">
     <h1>Adicionar Sensor</h1>
   </div>
 
-  <p ng-show="mensagem.length" class="alert alert-info"></p>
+  <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
 
   <form novalidate name="formulario" class="row" ng-submit="submeter()">
     <div class="col-md-6">
       <div class="form-group">
         <label>Fazenda</label>
-        <input type="text" ng-model="sensor.fazenda" name="fazenda" class="form-control" required ng-maxlength="20">
-        <p class="form-control alert-danger" ng-show="formulario.$submitted && formulario.fazenda.$error.required">
-          Fazenda deve ter no máximo 30 caracteres
-        </p>
+        <input type="text" ng-model="sensor.fazenda" name="fazenda" class="form-control" required maxlength="20">
       </div>
       <div class="form-group">
         <label>Código</label>
         <input type="number" ng-model="sensor.codigo" name="codigo" class="form-control" required>
-        <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.codigo.$error.required">
-          Código obrigatório
-        </span>
       </div>
       <button type="submit" class="btn btn-primary" ng-disable="formulario.$valid">
         Salvar

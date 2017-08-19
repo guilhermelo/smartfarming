@@ -2,6 +2,7 @@ angular.module('smartfarming').controller('LoginController', function($scope, $h
 
   $scope.usuario = {};
   $scope.mensagem = '';
+  $scope.mostraMenu = false;
 
   $scope.autenticar = function(){
     var usuario = $scope.usuario;

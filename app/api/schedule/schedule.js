@@ -19,9 +19,13 @@ function schedule(app){
             var json = JSON.parse(message.toString());
             json.dtHrRecuperado = moment().format('DD/MM/YYYY HH:mm:ss');
             //Salvar o sensor no banco de dados
-            api.gravarSensor(json);
+            if(api.verificaCadSensor(json.codigo)){
+                api.gravarSensor(json);
+            }else{
+              console.log('Sensor não cadastrado');
+            }
         }else{
-          console.log("Não começou");
+          console.log("Payload não é um JSON!");
         }
         cllientMQTT.end();
       });
