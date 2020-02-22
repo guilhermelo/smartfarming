@@ -27,7 +27,7 @@
     "consign": "^0.1.5",
     "express": "^4.15.3",
     "jsonwebtoken": "^5.4.1",
-    "mongoose": "^4.11.1",
+    "mongoose": "^5.9.2",
     "mqtt": "^2.9.1",
     "node-cron": "^1.2.0",
     "path": "^0.12.7"
